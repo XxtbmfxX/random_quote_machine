@@ -7,6 +7,7 @@ import {
 
 import App from './App'
 import LoginForm from "./components/LoginForm";
+import Profile from "./pages/Profile";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/Login",
     element: <LoginForm/>,
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
   },
 ]);
 

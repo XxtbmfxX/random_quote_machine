@@ -7,9 +7,11 @@ import MainPage from "./pages/MainPage";
 
 
 import { supabase } from "./supabase/client";
+import AuthPage from "./pages/AuthPage";
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
+  const [session, setSession] = useState({});
 
   const handleLogOut = async () => {
     const { error } = await supabase.auth.signOut()
@@ -19,9 +21,10 @@ export default function App() {
   useEffect(() => {
       
   supabase.auth.onAuthStateChange((event, session) => {
-    console.log(event, session)
+    console.log( session.user)
     if (session){
-      setUser(session?.user ?? null)
+      setUser(session?.user?.email ?? null)
+      setSession(session?.user ?? null)
     }
   })
 
@@ -30,16 +33,15 @@ export default function App() {
 
   return (
     <main> 
-      <Header/>
+      <Header username={user} />
+      <p>
+      </p>
       {
-        user &&
-        <>
-        <h1>Hola {user.email}</h1>
-        <button className="Button" onClick={handleLogOut} >Log out</button>
-        </> 
+        user ?
+        <AuthPage user={user} />
+        :
+        <MainPage session={true} />
       }
-      <Circle />
-      <MainPage/>
-    </main>
+     </main>
   );
 }

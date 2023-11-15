@@ -12,7 +12,7 @@
 }
 
 .card-skeleton {
-    @apply p-4 max-w-sm mx-auto bg-white rounded-md shadow-md animate-pulse;
+    @apply p-4 flex items-center bg-white rounded-md shadow-md animate-pulse;
   }
 
 
