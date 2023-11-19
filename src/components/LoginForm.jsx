@@ -20,10 +20,8 @@ export default function LoginForm() {
         },
       });
 
-      console.log(data, error);
       setMessage("Ya puede cerrar esta página")
     } catch (error) {
-      console.log(error);
       setError(error);
     }
   };

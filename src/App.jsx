@@ -16,12 +16,12 @@ export default function App() {
   const handleLogOut = async () => {
     const { error } = await supabase.auth.signOut()
     setUser(null)
+    window.location.reload();
   }
 
   useEffect(() => {
       
   supabase.auth.onAuthStateChange((event, session) => {
-    console.log( session.user)
     if (session){
       setUser(session?.user?.email ?? null)
       setSession(session?.user ?? null)
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <main> 
-      <Header username={user} />
+      <Header username={user} handleLogOut={handleLogOut} />
       <p>
       </p>
       {

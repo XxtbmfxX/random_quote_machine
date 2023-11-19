@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import LoadingSpinner from './LoadingSpinner';
 
-export default function Quote({session}) {
+export default function Quote() {
+
   
   
   const [loading, setLoading] = useState(false);
@@ -33,10 +34,7 @@ export default function Quote({session}) {
 
   return (
     <article className= {quoteData ? "" : "card-skeleton"}>
-      {
-        session && <button className='right-4' onClick={() => console.log("agregar a favoritos")} >💖</button>
-      }
-
+      
       {
         quoteData.quote &&
       <p className="text-gray-700 mb-4">
@@ -54,7 +52,7 @@ export default function Quote({session}) {
           className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
           >
             {
-              loading ? <LoadingSpinner/> : "Click Me"
+              loading ? <LoadingSpinner/> : "Nueva Frase"
             }
           
         </button>
